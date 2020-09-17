@@ -20,3 +20,4 @@ echo All done! You can now run:
 echo    export.bat
 
 :end
+Pause

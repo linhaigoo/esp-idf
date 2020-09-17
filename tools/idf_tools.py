@@ -1194,17 +1194,17 @@ def action_install_python_env(args):
         warn('Removing the existing Python environment in {}'.format(idf_python_env_path))
         shutil.rmtree(idf_python_env_path)
 
-    if not os.path.exists(virtualenv_python):
-        info('Creating a new Python environment in {}'.format(idf_python_env_path))
+    # if not os.path.exists(virtualenv_python):
+        # info('Creating a new Python environment in {}'.format(idf_python_env_path))
 
-        try:
-            import virtualenv   # noqa: F401
-        except ImportError:
-            info('Installing virtualenv')
-            subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--user', 'virtualenv'],
-                                  stdout=sys.stdout, stderr=sys.stderr)
+        # try:
+            # import virtualenv   # noqa: F401
+        # except ImportError:
+            # info('Installing virtualenv')
+            # subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--user', 'virtualenv'],
+                                  # stdout=sys.stdout, stderr=sys.stderr)
 
-        subprocess.check_call([sys.executable, '-m', 'virtualenv', idf_python_env_path],
+    subprocess.check_call([sys.executable, '-m', 'venv', idf_python_env_path],
                               stdout=sys.stdout, stderr=sys.stderr)
     run_args = [virtualenv_python, '-m', 'pip', 'install', '--no-warn-script-location']
     requirements_txt = os.path.join(global_idf_path, 'requirements.txt')
